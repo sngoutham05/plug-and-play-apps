@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>UI Auto Page Load / Refresher</title>
+	<script type="text/javascript">
+		// URL, refresh interval in seconds
+		let urlrefreshIntervalMap = new Map([
+		  ['http://localhost:9090', 10],
+		  ['http://localhost:9090/owners/find', 10],
+		  ['http://localhost:9090/owners?lastName=', 10],
+		  ['http://localhost:9090/owners?lastName=Davis', 10],
+		  ['http://localhost:9090/vets.html', 10],
+		  ['http://localhost:9090/owners/1', 5],
+		  ['http://localhost:9090/owners/2', 5],
+		  ['http://localhost:9090/owners/3', 5],
+		  ['http://localhost:9090/owners/4', 5],
+		  ['http://localhost:9090/owners/2/pets/2/visits/new', 10],
+		  ['http://localhost:9090/owners/4/pets/5/visits/new', 10],
+		  ['http://localhost:9090/owners/1/pets/1/visits/new', 20],
+		  ['http://localhost:9090/externalprofiles', 10],
+		  ['http://localhost:9090/externalprofiles/2', 5],
+		  ['http://localhost:9090/externalprofiles/5', 5],
+		  ['http://localhost:9090/externalprofiles/7', 5],
+		  ['http://localhost:9090/externalprofiles/dt', 10],
+		  ['http://localhost:9090/externalprofiles/dt/random', 5],
+		  ['http://localhost:9090/oups', 45],
+		]);
+
+		urlrefreshIntervalMap.forEach((refreshIntervalInSecs, url) => {
+			console.log(url + ":" + refreshIntervalInSecs);
+			let win1 = window.open(url);
+			setInterval(function(){win1.location.href=url},refreshIntervalInSecs*1000);
+		});
+		
+	</script>
+</head>
+<body>
+	<h1>All the URLs must be loaded and refreshed in other tabs.</h1>
+</body>
+</html>
